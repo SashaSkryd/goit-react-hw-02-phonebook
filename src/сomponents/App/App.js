@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import ContactForm from "../ContactForm/ContactForm.jsx"
 import Filter from "../Filter/Filter.jsx"
 import ContactList from "../ContactList/ContactList.jsx"
-import style from './App.module.css'
+import style from "./App.module.css"
 
 export default class App extends Component {
   state = {
@@ -40,20 +40,17 @@ export default class App extends Component {
   }
 
   render() {
-
     const { filter, contacts } = this.state
     const visibleContact = this.getVisibleContact()
-    
+
     return (
-      <>
-        <div className={style.container}>
-          <h1 className={style.title}>Phonebook</h1>
-          <ContactForm addContact={this.addContact} />
-          <h2 className={style.title}>Contacts</h2>
-          {contacts.length > 1 && <Filter filter={filter} filterRender={this.filterRender} />}
-          <ContactList array={visibleContact} deleteItem={this.handleDelete} />
-        </div>
-      </>
+      <div className={style.container}>
+        <h1 className={style.title}>Phonebook</h1>
+        <ContactForm addContact={this.addContact} />
+        <h2 className={style.title}>Contacts</h2>
+        {contacts.length > 1 && <Filter filter={filter} filterRender={this.filterRender} />}
+        <ContactList array={visibleContact} deleteItem={this.handleDelete} />
+      </div>
     )
   }
 }

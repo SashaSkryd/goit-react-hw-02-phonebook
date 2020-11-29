@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import PropTypes from "prop-types"
 import style from "./ContactForm.module.css"
+import shortid from "short-id"
 
 const INITIAL_STATE = {name: '', number: ''}
 
@@ -11,13 +11,20 @@ export default class ContactForm extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target
-    this.setState({ [name]: value })
+    this.setState({ [name]: value });
   }
 
+  
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.addContact({...this.state, id: shortid.generate()})
+    this.props.addContact({ ...this.state, id: shortid.generate() })
+    this.reset();
   }
+            
+    reset = () => {
+    this.setState({ ...INITIAL_STATE });
+  };
+         
   
   render() {
 
